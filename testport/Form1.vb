@@ -16,6 +16,7 @@ Public Class Form1
         k = 0
 
         ConnectBtn.Enabled = False
+        Button1.Enabled = False
 
         ComboBox1.Items.AddRange(IO.Ports.SerialPort.GetPortNames())
 
@@ -34,6 +35,7 @@ Public Class Form1
     Private Sub Connect_Pressed(sender As Object, e As EventArgs) Handles ConnectBtn.Click
         If Serial_Port1.IsOpen Then
             Serial_Port1.Close()
+            Button1.Enabled = False
         End If
 
         Try
@@ -44,6 +46,7 @@ Public Class Form1
 
         Try
             Serial_Port1.Open()
+            Button1.Enabled = True
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
