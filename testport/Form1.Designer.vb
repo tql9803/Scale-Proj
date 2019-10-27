@@ -23,7 +23,6 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.btnGetSerialPorts = New System.Windows.Forms.Button()
         Me.rtbIncomingData = New System.Windows.Forms.RichTextBox()
         Me.Serial_Port1 = New System.IO.Ports.SerialPort(Me.components)
         Me.Label11 = New System.Windows.Forms.Label()
@@ -32,16 +31,6 @@ Partial Class Form1
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.ConnectBtn = New System.Windows.Forms.Button()
         Me.SuspendLayout()
-        '
-        'btnGetSerialPorts
-        '
-        Me.btnGetSerialPorts.Location = New System.Drawing.Point(30, 21)
-        Me.btnGetSerialPorts.Name = "btnGetSerialPorts"
-        Me.btnGetSerialPorts.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.btnGetSerialPorts.Size = New System.Drawing.Size(89, 22)
-        Me.btnGetSerialPorts.TabIndex = 0
-        Me.btnGetSerialPorts.Text = "port"
-        Me.btnGetSerialPorts.UseVisualStyleBackColor = True
         '
         'rtbIncomingData
         '
@@ -72,24 +61,24 @@ Partial Class Form1
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(36, 191)
+        Me.Button1.Location = New System.Drawing.Point(12, 88)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(82, 23)
         Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Button1"
+        Me.Button1.Text = "Send"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(29, 60)
+        Me.ComboBox1.Location = New System.Drawing.Point(12, 12)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(60, 21)
         Me.ComboBox1.TabIndex = 5
         '
         'ConnectBtn
         '
-        Me.ConnectBtn.Location = New System.Drawing.Point(39, 107)
+        Me.ConnectBtn.Location = New System.Drawing.Point(12, 49)
         Me.ConnectBtn.Name = "ConnectBtn"
         Me.ConnectBtn.Size = New System.Drawing.Size(79, 20)
         Me.ConnectBtn.TabIndex = 6
@@ -107,15 +96,12 @@ Partial Class Form1
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.rtbIncomingData)
-        Me.Controls.Add(Me.btnGetSerialPorts)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents btnGetSerialPorts As Button
     Friend WithEvents rtbIncomingData As RichTextBox
     Friend WithEvents Serial_Port1 As IO.Ports.SerialPort
     Friend WithEvents Label11 As Label

@@ -15,43 +15,44 @@ Public Class Form1
         total = 0
         k = 0
 
+        ConnectBtn.Enabled = False
 
+        ComboBox1.Items.AddRange(IO.Ports.SerialPort.GetPortNames())
 
     End Sub
+
     Private Sub DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles Serial_Port1.DataReceived
         Dim inbuff As String
         inbuff = Serial_Port1.ReadExisting() ' Receiving Value From the Serial Port
         TextBox1.Text = inbuff
     End Sub
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Serial_Port1.WriteLine("Hello World!")
-    End Sub
-
-    Private Sub Port_press(sender As Object, e As EventArgs) Handles btnGetSerialPorts.Click
-
-        ComboBox1.Items.AddRange(IO.Ports.SerialPort.GetPortNames())
-        If ComboBox1.Items.Count <> 0 Then
-
-            Try
-                Serial_Port1.PortName = ComboBox1.Text
-            Catch ex As Exception
-                MsgBox(ex.ToString)
-            End Try
-        End If
-        '''''
-
     End Sub
 
     Private Sub Connect_Pressed(sender As Object, e As EventArgs) Handles ConnectBtn.Click
         If Serial_Port1.IsOpen Then
             Serial_Port1.Close()
         End If
-        Try
 
+        Try
+            Serial_Port1.PortName = ComboBox1.Text
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        Try
             Serial_Port1.Open()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+    End Sub
+
+    Private Sub PortTextUpdate(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        If ComboBox1.Items.Count <> 0 And ComboBox1.Text <> vbNullChar Then
+            ConnectBtn.Enabled = True
+        End If
     End Sub
 End Class
 
